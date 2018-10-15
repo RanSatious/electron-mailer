@@ -1,3 +1,13 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// All of the Node.js APIs are available in this process.
+const { ipcRenderer } = require('electron');
+
+document.querySelector('#select').addEventListener('click', event => {
+  ipcRenderer.send('open-file-dialog');
+});
+
+ipcRenderer.on('selected-file', (event, path) => {
+  console.log(path);
+});
+
+document.querySelector('#send').addEventListener('click', () => {
+  console.log('test');
+});

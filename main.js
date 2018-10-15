@@ -4,6 +4,8 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const glob = require('glob');
 
+const debug = /--debug/.test(process.argv[2]);
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -33,6 +35,13 @@ function initialize() {
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
+
+    // Launch fullscreen with DevTools open, usage: npm run debug
+    if (debug) {
+      mainWindow.webContents.openDevTools();
+      mainWindow.maximize();
+      require('devtron').install();
+    }
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function() {
