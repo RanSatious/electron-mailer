@@ -7,8 +7,15 @@
 </head>
 
 <body>
+  <div>
+    <label for="title">邮件标题</label>
+    <input type="text" name="title" id="title">
+  </div>
   <button id="select">选择文件</button>
   <button id="send">发送</button>
+  <div id="content"></div>
+  <div id="result"></div>
+  <script>window.$ = window.jQuery = require('jquery');</script>
   <script>
     // You can also require other files to run in this process
     require('./renderer.js')
